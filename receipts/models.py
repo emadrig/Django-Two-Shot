@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 # # Create your models here.
 # class Receipt(models.model):
@@ -9,15 +9,13 @@ from django.contrib.auth.models import User
 #     title= models.CharField(max_length=200)
 
 
-
-
 class ExpenseCategory(models.Model):
     name = models.CharField(max_length=50)
 
     owner = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL,
         related_name="categories",
-        on_delete =models.CASCADE
+        on_delete=models.CASCADE,
     )
 
 
@@ -26,10 +24,11 @@ class Account(models.Model):
     number = models.CharField(max_length=20)
 
     owner = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL,
         related_name="accounts",
-        on_delete =models.CASCADE
+        on_delete=models.CASCADE,
     )
+
 
 class Receipt(models.Model):
     vendor = models.CharField(max_length=200)
@@ -38,19 +37,15 @@ class Receipt(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     purchaser = models.ForeignKey(
-        User,
-        related_name= "receipts",
-        on_delete=models.CASCADE
+        settings.AUTH_USER_MODEL,
+        related_name="receipts",
+        on_delete=models.CASCADE,
     )
 
     category = models.ForeignKey(
-        "expensecategory",
-        related_name="receipts",
-        on_delete=models.CASCADE)
+        ExpenseCategory, related_name="receipts", on_delete=models.CASCADE
+    )
 
     account = models.ForeignKey(
-        "account",
-        related_name="receipts",
-        on_delete=models.CASCADE,
-        null=True
+        Account, related_name="receipts", on_delete=models.CASCADE, null=True
     )

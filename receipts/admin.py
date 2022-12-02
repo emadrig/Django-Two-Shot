@@ -14,4 +14,4 @@ class AccountAdmin(admin.ModelAdmin):
 
 @admin.register(Receipt)
 class ReceiptAdmin(admin.ModelAdmin):
-    list_display = ("vendor", "total")
+    list_display = ("vendor", "total", "tax", "date", "category", "account")
