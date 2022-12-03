@@ -9,3 +9,4 @@ def receipt_list(request):
     context = {"receipt_list": receipt_list}
 
     return render(request, "receipts/list.html", context)
+
