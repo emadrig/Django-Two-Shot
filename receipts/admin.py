@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ExpenseCategory, Receipt, Account
+from receipts.models import ExpenseCategory, Receipt, Account
 
 # Register your models here.
 @admin.register(ExpenseCategory)

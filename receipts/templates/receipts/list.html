@@ -7,6 +7,20 @@
     <title>Receipt</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="{% url 'home'%}">Home</a>
+
+            {% if user.is_authenticated %}
+
+            Hello,  {{user.username}}
+            <!-- <a href="{% url 'login'%}">Login</a> -->
+
+            {% else %}
+            <a href="{% url 'login'%}">Login</a>
+            {% endif %}
+        </nav>
+    </header>
     <main>
         <h1>Receipts</h1>
         <table>
