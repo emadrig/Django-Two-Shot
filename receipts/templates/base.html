@@ -8,6 +8,46 @@
         {%block title%} {%endblock title%}
     </title>
 </head>
+<header>
+    <nav>
+        {% if user.is_authenticated %}
+        Hello,  {{user.username}}
+        <ul>
+            <!-- <li>
+                <a href="{% url 'home'%}">Home</a>
+            </li> -->
+            <!-- <a href="{% url 'login'%}">Login</a> -->
+            <li>
+                <a href="{% url 'logout'%}">Logout</a>
+            </li>
+            <li>
+                <a href="{% url 'account_list'%}">Account List</a>
+            </li>
+            <li>
+                <a href="{% url 'category_list'%}">Category List</a>
+            </li>
+            <li>
+                <a href="{% url 'create_receipt'%}">Create Receipt</a>
+            </li>
+            <li>
+                <a href="{% url 'create_account'%}">Create Account</a>
+            </li>
+            <li>
+                <a href="{% url 'create_category'%}">Create Category</a>
+            </li>
+        </ul>
+        {% else %}
+        <ul>
+            <li>
+                <a href="{% url 'login'%}">Login</a>
+            </li>
+            <li>
+                <a href="{% url 'signup'%}">Sign Up</a>
+            </li>
+        </ul>
+        {% endif %}
+    </nav>
+</header>
 <body>
     {%block content%}{%endblock content%}
 </body>
