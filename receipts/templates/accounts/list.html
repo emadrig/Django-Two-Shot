@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Accounts
+{% endblock title %}
+
+{% block content %}
+
+<main>
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Number</td>
+                <td>Number of receipts</td>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for account in account_list %}
+        <tr>
+            <td>{{ account.name}}</td>
+            <td>{{ account.number}}</td>
+            <td>{{ account.receipts.count}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+</main>
+{% endblock content %}

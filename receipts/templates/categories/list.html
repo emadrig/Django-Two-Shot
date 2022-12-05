@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Categries
+{% endblock title %}
+
+{% block content %}
+<header>
+    <nav>
+        <a href="{% url 'home'%} ">Main Page</a>
+        <a href="{% url 'signup'%} ">Sign Up</a>
+    </nav>
+</header>
+
+<main>
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Number of receipts</td>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for category in category_list %}
+        <tr>
+            <td>{{ category.name}}</td>
+            <td>{{ category.receipts.count}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+</main>
+{% endblock content %}
