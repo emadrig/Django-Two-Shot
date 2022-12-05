@@ -14,6 +14,7 @@ def receipt_list(request):
     return render(request, "receipts/list.html", context)
 
 
+@login_required
 def create_receipt(request):
     if request.method == "POST":
         form = ReceiptForm(request.POST)

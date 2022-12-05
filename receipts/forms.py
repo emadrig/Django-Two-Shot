@@ -9,5 +9,7 @@ class ReceiptForm(ModelForm):
             "vendor",
             "total",
             "tax",
-            "purchaser",
+            "date",
+            "category",
+            "account",
         ]
